@@ -7,24 +7,26 @@
 
 import SwiftUI
 
-struct ConnectionProblemView: View {
+struct EventView: View {
+    let title: String
+    let image: String
+    let buttonTitle: String
     let action: () -> Void
     
     var body: some View {
         VStack(spacing: 24) {
-            Image(.noConnection)
+            Image(image)
                 .resizable()
                 .frame(width: 200, height: 200)
             
-            Text("There is no internet connection")
+            Text(title)
                 .font(CustomFont.nunitoSansRegular.set(size: 20))
                 .foregroundStyle(.black.opacity(0.87))
             
             Button {
-                print("Click")
                 action()
             } label: {
-                Text("Try again")
+                Text(buttonTitle)
                     .font(CustomFont.nunitoSansSemiBold.set(size: 18))
                     .foregroundStyle(.black.opacity(0.87))
                     .padding(EdgeInsets(top: 12, leading: 31.5, bottom: 12, trailing: 31.5))
@@ -36,5 +38,13 @@ struct ConnectionProblemView: View {
 }
 
 #Preview {
-    ConnectionProblemView {}
+    //NoConnection
+    //RegisterSuccess
+    //RegisterFailed
+    
+    EventView(
+        title: "There is no internet connection",
+        image: "NoConnection",
+        buttonTitle: "Try again"
+    ) {}
 }

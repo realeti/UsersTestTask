@@ -16,7 +16,7 @@
 		C60512FE2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C60512FD2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf */; };
 		C60513002E86FC0B005D1A27 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512FF2E86FC0B005D1A27 /* CustomFont.swift */; };
 		C60513042E86FF9A005D1A27 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513032E86FF9A005D1A27 /* TitleView.swift */; };
-		C60513062E8700FC005D1A27 /* ConnectionProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513052E8700FC005D1A27 /* ConnectionProblemView.swift */; };
+		C60513062E8700FC005D1A27 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513052E8700FC005D1A27 /* EventView.swift */; };
 		C60513082E87015D005D1A27 /* EmptyUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513072E87015D005D1A27 /* EmptyUsersView.swift */; };
 		C605130A2E870182005D1A27 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513092E870182005D1A27 /* UsersListView.swift */; };
 		C605130C2E870845005D1A27 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605130B2E870845005D1A27 /* NetworkService.swift */; };
@@ -53,7 +53,7 @@
 		C60512FD2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		C60512FF2E86FC0B005D1A27 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		C60513032E86FF9A005D1A27 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
-		C60513052E8700FC005D1A27 /* ConnectionProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionProblemView.swift; sourceTree = "<group>"; };
+		C60513052E8700FC005D1A27 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		C60513072E87015D005D1A27 /* EmptyUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyUsersView.swift; sourceTree = "<group>"; };
 		C60513092E870182005D1A27 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
 		C605130B2E870845005D1A27 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				C60513032E86FF9A005D1A27 /* TitleView.swift */,
-				C60513052E8700FC005D1A27 /* ConnectionProblemView.swift */,
+				C60513052E8700FC005D1A27 /* EventView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -431,7 +431,7 @@
 			files = (
 				C60513002E86FC0B005D1A27 /* CustomFont.swift in Sources */,
 				C605130A2E870182005D1A27 /* UsersListView.swift in Sources */,
-				C60513062E8700FC005D1A27 /* ConnectionProblemView.swift in Sources */,
+				C60513062E8700FC005D1A27 /* EventView.swift in Sources */,
 				C6C78C812E866EE80009544D /* Item.swift in Sources */,
 				C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */,
 				C60513182E87115B005D1A27 /* AppDependency.swift in Sources */,
