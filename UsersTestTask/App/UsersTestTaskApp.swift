@@ -25,7 +25,8 @@ struct UsersTestTaskApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
+                .preferredColorScheme(.light)
         }
         .modelContainer(sharedModelContainer)
     }
