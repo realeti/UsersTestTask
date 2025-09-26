@@ -11,7 +11,7 @@ struct UsersView: View {
     @Environment(UsersViewModel.self) private var viewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             TitleView(title: "Working with GET request")
             
             if !viewModel.users.isEmpty {
