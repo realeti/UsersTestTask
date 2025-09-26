@@ -20,9 +20,7 @@ struct TabBarView: View {
     var body: some View {
         TabView(selection: $selection) {
             Tab(value: .users) {
-                Text("Users view")
-                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
-                    .toolbarBackground(.red, for: .tabBar)
+                UsersView()
             } label: {
                 Label {
                     Text("Users")
