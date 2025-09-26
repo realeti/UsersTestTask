@@ -14,6 +14,9 @@ struct UsersListView: View {
         List(viewModel.users) { user in
             UserListRowView(user: user)
         }
+        .refreshable {
+            await viewModel.getUsers()
+        }
     }
 }
 
