@@ -11,7 +11,7 @@
 		C60512F22E86F4B3005D1A27 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512F12E86F4B3005D1A27 /* UsersViewModel.swift */; };
 		C60512F42E86F4CF005D1A27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512F32E86F4CF005D1A27 /* User.swift */; };
 		C60512F72E86F719005D1A27 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512F62E86F719005D1A27 /* UserDTO.swift */; };
-		C60512F92E86F971005D1A27 /* UserRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512F82E86F971005D1A27 /* UserRowView.swift */; };
+		C60512F92E86F971005D1A27 /* UserListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512F82E86F971005D1A27 /* UserListRowView.swift */; };
 		C60512FC2E86FB05005D1A27 /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C60512FB2E86FB05005D1A27 /* NunitoSans-Regular.ttf */; };
 		C60512FE2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C60512FD2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf */; };
 		C60513002E86FC0B005D1A27 /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60512FF2E86FC0B005D1A27 /* CustomFont.swift */; };
@@ -19,6 +19,12 @@
 		C60513062E8700FC005D1A27 /* ConnectionProblemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513052E8700FC005D1A27 /* ConnectionProblemView.swift */; };
 		C60513082E87015D005D1A27 /* EmptyUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513072E87015D005D1A27 /* EmptyUsersView.swift */; };
 		C605130A2E870182005D1A27 /* UsersListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513092E870182005D1A27 /* UsersListView.swift */; };
+		C605130C2E870845005D1A27 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605130B2E870845005D1A27 /* NetworkService.swift */; };
+		C605130F2E870A05005D1A27 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C605130E2E870A05005D1A27 /* AppConfig.swift */; };
+		C60513122E870B4B005D1A27 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513112E870B4B005D1A27 /* APIEndpoint.swift */; };
+		C60513142E870BFF005D1A27 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513132E870BFF005D1A27 /* HTTPMethod.swift */; };
+		C60513162E870DA6005D1A27 /* NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513152E870DA5005D1A27 /* NetError.swift */; };
+		C60513182E87115B005D1A27 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513172E87115B005D1A27 /* AppDependency.swift */; };
 		C6C78C812E866EE80009544D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7D2E866EE80009544D /* Item.swift */; };
 		C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7E2E866EE80009544D /* UsersTestTaskApp.swift */; };
 		C6C78C832E866EE80009544D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C78C7B2E866EE80009544D /* Assets.xcassets */; };
@@ -42,7 +48,7 @@
 		C60512F12E86F4B3005D1A27 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		C60512F32E86F4CF005D1A27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C60512F62E86F719005D1A27 /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
-		C60512F82E86F971005D1A27 /* UserRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRowView.swift; sourceTree = "<group>"; };
+		C60512F82E86F971005D1A27 /* UserListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListRowView.swift; sourceTree = "<group>"; };
 		C60512FB2E86FB05005D1A27 /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
 		C60512FD2E86FB10005D1A27 /* NunitoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		C60512FF2E86FC0B005D1A27 /* CustomFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
@@ -50,6 +56,12 @@
 		C60513052E8700FC005D1A27 /* ConnectionProblemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionProblemView.swift; sourceTree = "<group>"; };
 		C60513072E87015D005D1A27 /* EmptyUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyUsersView.swift; sourceTree = "<group>"; };
 		C60513092E870182005D1A27 /* UsersListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersListView.swift; sourceTree = "<group>"; };
+		C605130B2E870845005D1A27 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C605130E2E870A05005D1A27 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		C60513112E870B4B005D1A27 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		C60513132E870BFF005D1A27 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		C60513152E870DA5005D1A27 /* NetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetError.swift; sourceTree = "<group>"; };
+		C60513172E87115B005D1A27 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		C6C78C4F2E866EE10009544D /* UsersTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C5E2E866EE20009544D /* UsersTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C7B2E866EE80009544D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -93,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				C60513072E87015D005D1A27 /* EmptyUsersView.swift */,
-				C60512F82E86F971005D1A27 /* UserRowView.swift */,
+				C60512F82E86F971005D1A27 /* UserListRowView.swift */,
 				C60513092E870182005D1A27 /* UsersListView.swift */,
 				C60512EC2E86F483005D1A27 /* UsersView.swift */,
 			);
@@ -150,6 +162,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		C605130D2E8709FC005D1A27 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				C605130E2E870A05005D1A27 /* AppConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		C60513102E870A90005D1A27 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C6C78C462E866EE10009544D = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +205,6 @@
 				C6C78C8F2E866F430009544D /* Helpers */,
 				C6C78C8E2E866F3A0009544D /* Modules */,
 				C6C78C902E866F480009544D /* Resources */,
-				C6C78C8C2E866F2C0009544D /* Services */,
 			);
 			path = UsersTestTask;
 			sourceTree = "<group>";
@@ -203,6 +229,9 @@
 		C6C78C8D2E866F340009544D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C605130D2E8709FC005D1A27 /* Config */,
+				C60513102E870A90005D1A27 /* Extensions */,
+				C6C78C8C2E866F2C0009544D /* Services */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -246,6 +275,10 @@
 			isa = PBXGroup;
 			children = (
 				C60512F52E86F6E7005D1A27 /* DTO */,
+				C60513112E870B4B005D1A27 /* APIEndpoint.swift */,
+				C60513132E870BFF005D1A27 /* HTTPMethod.swift */,
+				C60513152E870DA5005D1A27 /* NetError.swift */,
+				C605130B2E870845005D1A27 /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -254,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C78C7E2E866EE80009544D /* UsersTestTaskApp.swift */,
+				C60513172E87115B005D1A27 /* AppDependency.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -400,12 +434,18 @@
 				C60513062E8700FC005D1A27 /* ConnectionProblemView.swift in Sources */,
 				C6C78C812E866EE80009544D /* Item.swift in Sources */,
 				C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */,
+				C60513182E87115B005D1A27 /* AppDependency.swift in Sources */,
 				C60512F42E86F4CF005D1A27 /* User.swift in Sources */,
+				C60513162E870DA6005D1A27 /* NetError.swift in Sources */,
+				C605130F2E870A05005D1A27 /* AppConfig.swift in Sources */,
+				C60513122E870B4B005D1A27 /* APIEndpoint.swift in Sources */,
 				C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */,
 				C60512ED2E86F483005D1A27 /* UsersView.swift in Sources */,
 				C60513082E87015D005D1A27 /* EmptyUsersView.swift in Sources */,
 				C60512F72E86F719005D1A27 /* UserDTO.swift in Sources */,
-				C60512F92E86F971005D1A27 /* UserRowView.swift in Sources */,
+				C60513142E870BFF005D1A27 /* HTTPMethod.swift in Sources */,
+				C605130C2E870845005D1A27 /* NetworkService.swift in Sources */,
+				C60512F92E86F971005D1A27 /* UserListRowView.swift in Sources */,
 				C60512F22E86F4B3005D1A27 /* UsersViewModel.swift in Sources */,
 				C60513042E86FF9A005D1A27 /* TitleView.swift in Sources */,
 			);

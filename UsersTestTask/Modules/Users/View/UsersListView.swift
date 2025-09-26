@@ -12,12 +12,12 @@ struct UsersListView: View {
     
     var body: some View {
         List(viewModel.users) { user in
-            Text(user.name)
+            UserListRowView(user: user)
         }
     }
 }
 
 #Preview {
     UsersListView()
-        .environment(UsersViewModel())
+        .environment(UsersViewModel(network: NetworkService()))
 }

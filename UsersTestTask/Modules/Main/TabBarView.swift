@@ -13,14 +13,22 @@ struct TabBarView: View {
         case signUp
         case search
     }
-
+    
+    @State private var usersViewModel: UsersViewModel
     @State private var selection: TabItem = .users
     @State private var search = ""
+    
+    // MARK: - Init
+    init(dependency: AppDependency) {
+        let vm = UsersViewModel(network: dependency.network)
+        _usersViewModel = State(initialValue: vm)
+    }
 
     var body: some View {
         TabView(selection: $selection) {
             Tab(value: .users) {
                 UsersView()
+                    .environment(usersViewModel)
             } label: {
                 Label {
                     Text("Users")
@@ -58,5 +66,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView()
+    TabBarView(dependency: AppDependency())
 }

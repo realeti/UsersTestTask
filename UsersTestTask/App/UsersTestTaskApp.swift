@@ -22,10 +22,12 @@ struct UsersTestTaskApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    let dependency = AppDependency()
 
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            TabBarView(dependency: dependency)
                 .preferredColorScheme(.light)
         }
         .modelContainer(sharedModelContainer)
