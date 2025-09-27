@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func getUsers() async throws -> [User]
+    func getUsers(page: Int) async throws -> [User]
     func register(user: User) async throws -> Bool
 }
 
@@ -48,9 +48,16 @@ private extension NetworkService {
 
 // MARK: - Get Users
 extension NetworkService {
-    func getUsers() async throws -> [User] {
+    func getUsers(page: Int) async throws -> [User] {
         var components = baseUrlComponents
         components.path = APIEndpoint.users
+        
+        let queryItems: [URLQueryItem] = [
+            URLQueryItem(name: "count", value: "6"),
+            URLQueryItem(name: "page", value: String(page))
+        ]
+        
+        components.queryItems = queryItems
         
         guard let url = components.url else {
             throw NetError.invalidURL

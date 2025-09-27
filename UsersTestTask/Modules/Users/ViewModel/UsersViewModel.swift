@@ -15,6 +15,8 @@ final class UsersViewModel {
     
     // MARK: - Public Properties
     var isLoading = false
+    var currentPage = 1
+    var totalUsers = 0
     
     // MARK: - Init
     init(network: NetworkServiceProtocol) {
@@ -29,8 +31,10 @@ final class UsersViewModel {
         do {
             isLoading = true
             
-            users = try await networkService.getUsers()
-            print("Users loaded!")
+            let newUsers = try await networkService.getUsers(page: currentPage)
+            users.append(contentsOf: newUsers)
+            users.sort(by: { $0.registrationTimestamp > $1.registrationTimestamp })
+            print(users)
         } catch let error as NetError {
             print(error.localizedDescription)
         } catch {
