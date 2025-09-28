@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Comparable {
     let id: Int
     let name: String
     let email: String
@@ -16,6 +16,10 @@ struct User: Identifiable {
     let positionId: Int
     let registrationTimestamp: Double
     let photo: String
+    
+    static func < (lhs: User, rhs: User) -> Bool {
+        lhs.registrationTimestamp < rhs.registrationTimestamp
+    }
 }
 
 extension User {

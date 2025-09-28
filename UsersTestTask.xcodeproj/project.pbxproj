@@ -25,6 +25,8 @@
 		C60513142E870BFF005D1A27 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513132E870BFF005D1A27 /* HTTPMethod.swift */; };
 		C60513162E870DA6005D1A27 /* NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513152E870DA5005D1A27 /* NetError.swift */; };
 		C60513182E87115B005D1A27 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513172E87115B005D1A27 /* AppDependency.swift */; };
+		C651593A2E8939430099A2F6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65159392E8939430099A2F6 /* ImageCache.swift */; };
+		C6B87A552E88326400106566 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B87A542E88326400106566 /* ActionButton.swift */; };
 		C6C78C812E866EE80009544D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7D2E866EE80009544D /* Item.swift */; };
 		C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7E2E866EE80009544D /* UsersTestTaskApp.swift */; };
 		C6C78C832E866EE80009544D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C78C7B2E866EE80009544D /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		C60513132E870BFF005D1A27 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C60513152E870DA5005D1A27 /* NetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetError.swift; sourceTree = "<group>"; };
 		C60513172E87115B005D1A27 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C65159392E8939430099A2F6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		C6B87A542E88326400106566 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		C6C78C4F2E866EE10009544D /* UsersTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C5E2E866EE20009544D /* UsersTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C7B2E866EE80009544D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			children = (
 				C60513032E86FF9A005D1A27 /* TitleView.swift */,
 				C60513052E8700FC005D1A27 /* EventView.swift */,
+				C6B87A542E88326400106566 /* ActionButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -221,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				C6C78C922E866F840009544D /* Network */,
-				C6C78C912E866F6D0009544D /* AppStorage */,
+				C6C78C912E866F6D0009544D /* Storage */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -263,12 +268,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		C6C78C912E866F6D0009544D /* AppStorage */ = {
+		C6C78C912E866F6D0009544D /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				C6C78C7D2E866EE80009544D /* Item.swift */,
+				C65159392E8939430099A2F6 /* ImageCache.swift */,
 			);
-			path = AppStorage;
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		C6C78C922E866F840009544D /* Network */ = {
@@ -439,6 +445,7 @@
 				C60513162E870DA6005D1A27 /* NetError.swift in Sources */,
 				C605130F2E870A05005D1A27 /* AppConfig.swift in Sources */,
 				C60513122E870B4B005D1A27 /* APIEndpoint.swift in Sources */,
+				C651593A2E8939430099A2F6 /* ImageCache.swift in Sources */,
 				C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */,
 				C60512ED2E86F483005D1A27 /* UsersView.swift in Sources */,
 				C60513082E87015D005D1A27 /* EmptyUsersView.swift in Sources */,
@@ -448,6 +455,7 @@
 				C60512F92E86F971005D1A27 /* UserListRowView.swift in Sources */,
 				C60512F22E86F4B3005D1A27 /* UsersViewModel.swift in Sources */,
 				C60513042E86FF9A005D1A27 /* TitleView.swift in Sources */,
+				C6B87A552E88326400106566 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,7 +632,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -662,7 +670,7 @@
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

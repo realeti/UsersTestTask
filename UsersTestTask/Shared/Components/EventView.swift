@@ -11,6 +11,7 @@ struct EventView: View {
     let title: String
     let image: String
     let buttonTitle: String
+    let isLoading: Bool
     let action: () -> Void
     
     var body: some View {
@@ -23,16 +24,7 @@ struct EventView: View {
                 .font(CustomFont.nunitoSansRegular.set(size: 20))
                 .foregroundStyle(.black.opacity(0.87))
             
-            Button {
-                action()
-            } label: {
-                Text(buttonTitle)
-                    .font(CustomFont.nunitoSansSemiBold.set(size: 18))
-                    .foregroundStyle(.black.opacity(0.87))
-                    .padding(EdgeInsets(top: 12, leading: 31.5, bottom: 12, trailing: 31.5))
-                    .background(.yellowLand)
-                    .clipShape(RoundedRectangle(cornerRadius: 24))
-            }
+            ActionButton(title: buttonTitle, isDisabled: isLoading, action: action)
         }
     }
 }
@@ -45,6 +37,7 @@ struct EventView: View {
     EventView(
         title: "There is no internet connection",
         image: "NoConnection",
-        buttonTitle: "Try again"
+        buttonTitle: "Try again",
+        isLoading: false
     ) {}
 }

@@ -17,7 +17,9 @@ struct UserListRowView: View {
                     .resizable()
                     .scaledToFit()
             } placeholder: {
-                Color.gray
+                ProgressView()
+                    .padding()
+                    .background(Color.gray.opacity(0.7))
             }
             .frame(width: 50, height: 50)
             .clipShape(.circle)

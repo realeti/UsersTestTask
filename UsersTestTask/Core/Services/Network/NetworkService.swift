@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func getUsers(page: Int) async throws -> [User]
+    func getUsers(page: Int) async throws -> UsersResponseDTO
     func register(user: User) async throws -> Bool
 }
 
@@ -40,15 +40,21 @@ private extension NetworkService {
             }
             
             return data
-        } catch {
+        } catch let error as URLError {
+            if error.code == .notConnectedToInternet || error.code == .networkConnectionLost {
+                throw NetError.noInternet
+            }
+            
             throw NetError.reconnectLimitExceeded
+        } catch {
+            throw NetError.connectionProblem
         }
     }
 }
 
 // MARK: - Get Users
 extension NetworkService {
-    func getUsers(page: Int) async throws -> [User] {
+    func getUsers(page: Int) async throws -> UsersResponseDTO {
         var components = baseUrlComponents
         components.path = APIEndpoint.users
         
@@ -69,8 +75,7 @@ extension NetworkService {
         let data = try await performRequest(request: request)
         
         do {
-            let decodedData = try decoder.decode(UsersResponseDTO.self, from: data)
-            return decodedData.users.map { User(dto: $0) }
+            return try decoder.decode(UsersResponseDTO.self, from: data)
         } catch {
             throw NetError.wrongDecode
         }

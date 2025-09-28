@@ -14,29 +14,43 @@ final class UsersViewModel {
     private(set) var users: [User] = []
     
     // MARK: - Public Properties
+    var notConnectedToInternet = false
     var isLoading = false
-    var currentPage = 1
-    var totalUsers = 0
+    var currentPage = 0
+    var totalPages = 0
     
     // MARK: - Init
     init(network: NetworkServiceProtocol) {
         self.networkService = network
     }
-    
-    // MARK: - Get Users
-    @MainActor
+}
+
+// MARK: - Get Users
+extension UsersViewModel {
     func getUsers() async {
         defer { isLoading = false }
+        
+        guard currentPage < totalPages || currentPage == 0 else {
+            return
+        }
         
         do {
             isLoading = true
             
-            let newUsers = try await networkService.getUsers(page: currentPage)
+            let data = try await networkService.getUsers(page: currentPage + 1)
+            let newUsers = data.users.map { User(dto: $0) }
+            totalPages = data.totalPages
+            notConnectedToInternet = false
+            
+            guard !newUsers.isEmpty else {
+                return
+            }
+            
+            currentPage += 1
             users.append(contentsOf: newUsers)
-            users.sort(by: { $0.registrationTimestamp > $1.registrationTimestamp })
-            print(users)
-        } catch let error as NetError {
-            print(error.localizedDescription)
+            users.sort(by: >)
+        } catch NetError.noInternet {
+            notConnectedToInternet = true
         } catch {
             print(error.localizedDescription)
         }

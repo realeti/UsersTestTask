@@ -18,4 +18,5 @@ enum NetError: Error {
     case unsupportedMessage
     case reconnectLimitExceeded
     case retryFailed
+    case noInternet
 }

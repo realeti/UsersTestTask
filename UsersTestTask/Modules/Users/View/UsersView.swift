@@ -12,12 +12,31 @@ struct UsersView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            TitleView(title: "Working with GET request")
-            
-            if !viewModel.users.isEmpty {
-                UsersListView()
-            } else {
+            if viewModel.notConnectedToInternet {
+                ZStack(alignment: .top) {
+                    EventView(
+                        title: "There is no internet connection",
+                        image: "NoConnection",
+                        buttonTitle: "Try again",
+                        isLoading: viewModel.isLoading,
+                        action: {
+                            Task {
+                                await viewModel.getUsers()
+                            }
+                        }
+                    )
+                    .toolbarVisibility(.hidden, for: .tabBar)
+                    
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
+                }
+            } else if viewModel.users.isEmpty {
                 EmptyUsersView()
+            } else {
+                TitleView(title: "Working with GET request")
+                UsersListView()
             }
         }
         .task {

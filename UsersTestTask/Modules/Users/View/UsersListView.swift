@@ -13,10 +13,14 @@ struct UsersListView: View {
     var body: some View {
         List(viewModel.users) { user in
             UserListRowView(user: user)
+                .onAppear {
+                    if user == viewModel.users.last && !viewModel.isLoading {
+                        Task {
+                            await viewModel.getUsers()
+                        }
+                    }
+                }
         }
-        /*.refreshable {
-            await viewModel.getUsers()
-        }*/
     }
 }
 

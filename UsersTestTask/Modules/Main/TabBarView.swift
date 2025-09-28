@@ -11,12 +11,12 @@ struct TabBarView: View {
     enum TabItem: String {
         case users
         case signUp
-        case search
+        //case search
     }
     
     @State private var usersViewModel: UsersViewModel
     @State private var selection: TabItem = .users
-    @State private var search = ""
+    //@State private var search = ""
     
     // MARK: - Init
     init(dependency: AppDependency) {
@@ -36,7 +36,6 @@ struct TabBarView: View {
                     Image(.usersIcon)
                         .foregroundStyle(selection == .users ? .blueSky : .black.opacity(0.6))
                 }
-                // .environment(\.symbolVariants, .none)
             }
 
             Tab(value: .signUp) {
@@ -50,7 +49,6 @@ struct TabBarView: View {
                     Image(.signUpIcon)
                         .foregroundStyle(selection == .signUp ? .blueSky : .black.opacity(0.6))
                 }
-                // .environment(\.symbolVariants, .none)
             }
 
             /*Tab(value: .search, role: .search) {
