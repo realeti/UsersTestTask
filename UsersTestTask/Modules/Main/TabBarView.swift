@@ -15,13 +15,17 @@ struct TabBarView: View {
     }
     
     @State private var usersViewModel: UsersViewModel
+    @State private var signUpViewModel: SignUpViewModel
     @State private var selection: TabItem = .users
     //@State private var search = ""
     
     // MARK: - Init
     init(dependency: AppDependency) {
-        let vm = UsersViewModel(network: dependency.network)
-        _usersViewModel = State(initialValue: vm)
+        let usersVM = UsersViewModel(network: dependency.network)
+        let signUpVM = SignUpViewModel(network: dependency.network)
+        
+        _usersViewModel = State(initialValue: usersVM)
+        _signUpViewModel = State(initialValue: signUpVM)
     }
 
     var body: some View {
@@ -39,9 +43,8 @@ struct TabBarView: View {
             }
 
             Tab(value: .signUp) {
-                Text("Sign up view")
-                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
-                    .toolbarBackground(.red, for: .tabBar)
+                SignUpView()
+                    .environment(signUpViewModel)
             } label: {
                 Label {
                     Text("Sign up")
