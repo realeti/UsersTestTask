@@ -13,7 +13,7 @@ struct UsersView: View {
     var body: some View {
         VStack(spacing: 0) {
             if viewModel.notConnectedToInternet {
-                ZStack(alignment: .top) {
+                ZStack(alignment: .bottom) {
                     EventView(
                         title: "There is no internet connection",
                         image: "NoConnection",
@@ -29,10 +29,11 @@ struct UsersView: View {
                     
                     if viewModel.isLoading {
                         ProgressView()
-                            .progressViewStyle(.circular)
+                            .controlSize(.regular)
+                            .offset(y: 32)
                     }
                 }
-            } else if viewModel.users.isEmpty {
+            } else if viewModel.users.isEmpty && !viewModel.isLoading {
                 EmptyUsersView()
             } else {
                 TitleView(title: "Working with GET request")

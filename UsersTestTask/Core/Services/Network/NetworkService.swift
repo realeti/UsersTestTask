@@ -41,10 +41,10 @@ private extension NetworkService {
             
             return data
         } catch let error as URLError {
-            if error.code == .notConnectedToInternet || error.code == .networkConnectionLost {
+            if error.code == .notConnectedToInternet || error.code == .networkConnectionLost || error.code == .timedOut {
                 throw NetError.noInternet
             }
-            
+            print("URLError:", error.localizedDescription)
             throw NetError.reconnectLimitExceeded
         } catch {
             throw NetError.connectionProblem
@@ -71,6 +71,7 @@ extension NetworkService {
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
+        request.timeoutInterval = 10
         
         let data = try await performRequest(request: request)
         

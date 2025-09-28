@@ -28,7 +28,8 @@ final class UsersViewModel {
 // MARK: - Get Users
 extension UsersViewModel {
     func getUsers() async {
-        defer { isLoading = false }
+        defer {
+            isLoading = false }
         
         guard currentPage < totalPages || currentPage == 0 else {
             return

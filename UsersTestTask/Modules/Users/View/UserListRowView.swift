@@ -18,6 +18,7 @@ struct UserListRowView: View {
                     .scaledToFit()
             } placeholder: {
                 ProgressView()
+                    .tint(.black)
                     .padding()
                     .background(Color.gray.opacity(0.7))
             }
