@@ -10,6 +10,7 @@ import Foundation
 protocol NetworkServiceProtocol {
     func getUsers(page: Int) async throws -> UsersResponseDTO
     func register(user: User) async throws -> Bool
+    func getUserPositions() async throws -> [UserPosition]
 }
 
 final class NetworkService: NetworkServiceProtocol {
@@ -87,5 +88,30 @@ extension NetworkService {
 extension NetworkService {
     func register(user: User) async throws -> Bool {
         return true
+    }
+}
+
+// MARK: - Get User Positions
+extension NetworkService {
+    func getUserPositions() async throws -> [UserPosition] {
+        var components = baseUrlComponents
+        components.path = APIEndpoint.positions
+        
+        guard let url = components.url else {
+            throw NetError.invalidURL
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.timeoutInterval = 10
+        
+        let data = try await performRequest(request: request)
+        
+        do {
+            let decodedData = try decoder.decode(UserPositionsDTO.self, from: data)
+            return decodedData.positions.map { UserPosition(dto: $0) }
+        } catch {
+            throw NetError.wrongDecode
+        }
     }
 }

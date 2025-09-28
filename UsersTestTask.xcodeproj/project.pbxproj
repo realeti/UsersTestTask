@@ -28,6 +28,9 @@
 		C651593A2E8939430099A2F6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65159392E8939430099A2F6 /* ImageCache.swift */; };
 		C69182C12E89B75100F49982 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C02E89B75100F49982 /* SignUpView.swift */; };
 		C69182C32E89B76000F49982 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C22E89B76000F49982 /* SignUpViewModel.swift */; };
+		C69182C52E89BD8800F49982 /* UserPositionsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C42E89BD8800F49982 /* UserPositionsDTO.swift */; };
+		C69182C72E89BDEF00F49982 /* UserPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C62E89BDEF00F49982 /* UserPosition.swift */; };
+		C69182C92E89C21400F49982 /* PositionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C82E89C21400F49982 /* PositionsView.swift */; };
 		C6B87A552E88326400106566 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B87A542E88326400106566 /* ActionButton.swift */; };
 		C6C78C812E866EE80009544D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7D2E866EE80009544D /* Item.swift */; };
 		C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7E2E866EE80009544D /* UsersTestTaskApp.swift */; };
@@ -69,6 +72,9 @@
 		C65159392E8939430099A2F6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C69182C02E89B75100F49982 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		C69182C22E89B76000F49982 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		C69182C42E89BD8800F49982 /* UserPositionsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPositionsDTO.swift; sourceTree = "<group>"; };
+		C69182C62E89BDEF00F49982 /* UserPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPosition.swift; sourceTree = "<group>"; };
+		C69182C82E89C21400F49982 /* PositionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionsView.swift; sourceTree = "<group>"; };
 		C6B87A542E88326400106566 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		C6C78C4F2E866EE10009544D /* UsersTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C5E2E866EE20009544D /* UsersTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				C60512F62E86F719005D1A27 /* UserDTO.swift */,
+				C69182C42E89BD8800F49982 /* UserPositionsDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -200,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				C69182C02E89B75100F49982 /* SignUpView.swift */,
+				C69182C82E89C21400F49982 /* PositionsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +215,7 @@
 		C69182BD2E89B6E900F49982 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C69182C62E89BDEF00F49982 /* UserPosition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -475,11 +484,14 @@
 			files = (
 				C60513002E86FC0B005D1A27 /* CustomFont.swift in Sources */,
 				C605130A2E870182005D1A27 /* UsersListView.swift in Sources */,
+				C69182C72E89BDEF00F49982 /* UserPosition.swift in Sources */,
+				C69182C92E89C21400F49982 /* PositionsView.swift in Sources */,
 				C60513062E8700FC005D1A27 /* EventView.swift in Sources */,
 				C6C78C812E866EE80009544D /* Item.swift in Sources */,
 				C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */,
 				C60513182E87115B005D1A27 /* AppDependency.swift in Sources */,
 				C60512F42E86F4CF005D1A27 /* User.swift in Sources */,
+				C69182C52E89BD8800F49982 /* UserPositionsDTO.swift in Sources */,
 				C60513162E870DA6005D1A27 /* NetError.swift in Sources */,
 				C605130F2E870A05005D1A27 /* AppConfig.swift in Sources */,
 				C60513122E870B4B005D1A27 /* APIEndpoint.swift in Sources */,

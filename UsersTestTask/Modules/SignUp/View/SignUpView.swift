@@ -16,7 +16,11 @@ struct SignUpView: View {
             
             Spacer()
             
-            VStack(spacing: 0) {
+            VStack(spacing: 24) {
+                PositionsView()
+                
+                Spacer()
+                
                 ActionButton(
                     title: "Sign up",
                     isDisabled: false,
@@ -25,6 +29,9 @@ struct SignUpView: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 32)
+        }
+        .task {
+            await viewModel.getUserPositions()
         }
     }
 }
