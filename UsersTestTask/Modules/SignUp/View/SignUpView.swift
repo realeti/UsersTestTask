@@ -18,6 +18,7 @@ struct SignUpView: View {
             
             VStack(spacing: 24) {
                 PositionsView()
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
                 

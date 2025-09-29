@@ -12,31 +12,21 @@ struct PositionsView: View {
     @State private var selection = 0
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 24) {
             Text("Select your position")
                 .font(CustomFont.nunitoSansRegular.set(size: 18))
                 .foregroundStyle(.black.opacity(0.87))
             
-            /*Picker("", selection: $selection) {
+            VStack(alignment: .leading, spacing: 16) {
                 ForEach(viewModel.positions) { position in
-                    Text(position.name)
-                        .tag(position.id)
+                    RadioButton(
+                        title: position.name,
+                        isSelected: selection == position.id,
+                        action: { selection = position.id }
+                    )
                 }
             }
-            .pickerStyle(.inline)*/
-            
-            ForEach(viewModel.positions) { position in
-                HStack(spacing: 24) {
-                    Image(systemName: selection == position.id ? "largecircle.fill.circle" : "circle")
-                        .resizable()
-                        .foregroundColor(selection == position.id ? .blueSky : .blueSky)
-                        .frame(width: 14, height: 14)
-                    
-                    Text(position.name)
-                        .font(CustomFont.nunitoSansRegular.set(size: 16))
-                        .foregroundColor(.black.opacity(0.87))
-                }
-            }
+            .padding(.leading, 17)
         }
     }
 }
