@@ -12,7 +12,7 @@ struct PositionsView: View {
     var positions: [UserPosition]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 24) {
             Text("Select your position")
                 .font(CustomFont.nunitoSansRegular.set(size: 18))
                 .foregroundStyle(.black.opacity(0.87))

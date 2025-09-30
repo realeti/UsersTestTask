@@ -29,7 +29,7 @@ struct UserTextField: View {
         VStack(alignment: .leading, spacing: 4) {
             TextField(title, text: $text)
                 .font(CustomFont.nunitoSansRegular.set(size: 16))
-                .foregroundStyle(isError ? .primaryRed : .black.opacity(0.48))
+                .foregroundStyle(isError ? .primaryRed : .black.opacity(0.6))
                 .textFieldStyle(.plain)
                 .focused($isFocused)
                 .padding(.vertical, 12)
