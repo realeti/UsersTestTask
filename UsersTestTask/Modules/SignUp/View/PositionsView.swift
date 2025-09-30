@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct PositionsView: View {
-    @Environment(SignUpViewModel.self) private var viewModel
-    @State private var selection = 0
+    @Binding var selection: Int
+    var positions: [UserPosition]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 24) {
+        VStack(alignment: .leading, spacing: 16) {
             Text("Select your position")
                 .font(CustomFont.nunitoSansRegular.set(size: 18))
                 .foregroundStyle(.black.opacity(0.87))
             
             VStack(alignment: .leading, spacing: 16) {
-                ForEach(viewModel.positions) { position in
+                ForEach(positions) { position in
                     RadioButton(
                         title: position.name,
                         isSelected: selection == position.id,
@@ -32,6 +32,13 @@ struct PositionsView: View {
 }
 
 #Preview {
-    PositionsView()
-        .environment(SignUpViewModel(network: NetworkService()))
+    @Previewable @State var selection = 0
+    
+    PositionsView(
+        selection: $selection,
+        positions: [
+            UserPosition(id: 1, name: "Testy"),
+            UserPosition(id: 2, name: "Testy2")
+        ]
+    )
 }

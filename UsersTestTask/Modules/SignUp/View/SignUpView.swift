@@ -11,21 +11,54 @@ struct SignUpView: View {
     @Environment(SignUpViewModel.self) private var viewModel
     
     var body: some View {
+        @Bindable var viewModel = viewModel
+        
         VStack(spacing: 0) {
             TitleView(title: "Working with POST request")
             
-            Spacer()
-            
             VStack(spacing: 24) {
-                PositionsView()
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                UserTextField(
+                    title: "Your name",
+                    text: $viewModel.name,
+                    isError: false,
+                    supportText: ""
+                )
                 
-                Spacer()
+                UserTextField(
+                    title: "Email",
+                    text: $viewModel.email,
+                    isError: false,
+                    supportText: ""
+                )
+                
+                UserTextField(
+                    title: "Phone",
+                    text: $viewModel.name,
+                    isError: false,
+                    supportText: "+38 (XXX) XXX - XX - XX"
+                )
+                
+                PositionsView(
+                    selection: $viewModel.position,
+                    positions: viewModel.positions
+                )
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                UserTextField(
+                    title: "Upload your photo",
+                    text: $viewModel.name,
+                    isError: false,
+                    supportText: ""
+                )
                 
                 ActionButton(
                     title: "Sign up",
                     isDisabled: false,
-                    action: {}
+                    action: {
+                        Task {
+                            await viewModel.register()
+                        }
+                    }
                 )
             }
             .padding(.horizontal, 16)
@@ -39,5 +72,8 @@ struct SignUpView: View {
 
 #Preview {
     SignUpView()
-        .environment(SignUpViewModel(network: NetworkService()))
+        .environment(SignUpViewModel(
+            network: NetworkService(),
+            validation: ValidationService())
+        )
 }

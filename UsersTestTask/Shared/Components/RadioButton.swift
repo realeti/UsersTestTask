@@ -19,7 +19,6 @@ struct RadioButton: View {
             } label: {
                 Image(systemName: isSelected ? "circle.inset.filled" : "circle")
                     .resizable()
-                    .symbolRenderingMode(.palette)
                     .foregroundColor(.blueSky)
                     .frame(width: 14, height: 14)
             }

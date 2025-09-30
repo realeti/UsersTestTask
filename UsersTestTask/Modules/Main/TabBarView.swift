@@ -22,7 +22,10 @@ struct TabBarView: View {
     // MARK: - Init
     init(dependency: AppDependency) {
         let usersVM = UsersViewModel(network: dependency.network)
-        let signUpVM = SignUpViewModel(network: dependency.network)
+        let signUpVM = SignUpViewModel(
+            network: dependency.network,
+            validation: dependency.validation
+        )
         
         _usersViewModel = State(initialValue: usersVM)
         _signUpViewModel = State(initialValue: signUpVM)
