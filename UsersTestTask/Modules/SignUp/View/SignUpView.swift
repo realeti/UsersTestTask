@@ -19,21 +19,21 @@ struct SignUpView: View {
             ScrollView {
                 VStack(spacing: 24) {
                     VStack(spacing: 16) {
-                        UserTextField(
+                        UserTextFieldView(
                             title: "Your name",
                             text: $viewModel.name,
                             isError: false,
                             supportText: ""
                         )
                         
-                        UserTextField(
+                        UserTextFieldView(
                             title: "Email",
                             text: $viewModel.email,
                             isError: false,
                             supportText: ""
                         )
                         
-                        UserTextField(
+                        UserTextFieldView(
                             title: "Phone",
                             text: $viewModel.name,
                             isError: false,
@@ -47,11 +47,10 @@ struct SignUpView: View {
                     )
                     .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    UserTextField(
-                        title: "Upload your photo",
-                        text: $viewModel.name,
+                    UploadPhotoView(
                         isError: false,
-                        supportText: ""
+                        supportText: "Photo is required",
+                        action: {}
                     )
                     
                     ActionButton(

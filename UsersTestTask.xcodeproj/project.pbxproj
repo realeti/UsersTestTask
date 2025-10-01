@@ -38,7 +38,7 @@
 		C6A99A532E8C4BDF00042EDB /* Data + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A99A522E8C4BDF00042EDB /* Data + Ext.swift */; };
 		C6A99A552E8C555300042EDB /* UserRegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A99A542E8C555300042EDB /* UserRegisterRequest.swift */; };
 		C6A99A572E8C582200042EDB /* Result + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A99A562E8C582200042EDB /* Result + Ext.swift */; };
-		C6A99A592E8C593000042EDB /* UserTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A99A582E8C593000042EDB /* UserTextField.swift */; };
+		C6A99A592E8C593000042EDB /* UserTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A99A582E8C593000042EDB /* UserTextFieldView.swift */; };
 		C6B87A552E88326400106566 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B87A542E88326400106566 /* ActionButton.swift */; };
 		C6C78C812E866EE80009544D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7D2E866EE80009544D /* Item.swift */; };
 		C6C78C822E866EE80009544D /* UsersTestTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C7E2E866EE80009544D /* UsersTestTaskApp.swift */; };
@@ -46,6 +46,8 @@
 		C6C78C862E866EEB0009544D /* UsersTestTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C842E866EEB0009544D /* UsersTestTaskTests.swift */; };
 		C6C78C962E8675EC0009544D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C78C952E8675EC0009544D /* Launch Screen.storyboard */; };
 		C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C992E867C670009544D /* TabBarView.swift */; };
+		C6CF69F32E8D7CBB00EC58CA /* UserTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF69F22E8D7CBB00EC58CA /* UserTextFieldStyle.swift */; };
+		C6CF69F52E8D7FB800EC58CA /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +92,7 @@
 		C6A99A522E8C4BDF00042EDB /* Data + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data + Ext.swift"; sourceTree = "<group>"; };
 		C6A99A542E8C555300042EDB /* UserRegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterRequest.swift; sourceTree = "<group>"; };
 		C6A99A562E8C582200042EDB /* Result + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result + Ext.swift"; sourceTree = "<group>"; };
-		C6A99A582E8C593000042EDB /* UserTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextField.swift; sourceTree = "<group>"; };
+		C6A99A582E8C593000042EDB /* UserTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextFieldView.swift; sourceTree = "<group>"; };
 		C6B87A542E88326400106566 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		C6C78C4F2E866EE10009544D /* UsersTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UsersTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C78C5E2E866EE20009544D /* UsersTestTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsersTestTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,8 @@
 		C6C78C952E8675EC0009544D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C6C78C972E867A1A0009544D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6C78C992E867C670009544D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		C6CF69F22E8D7CBB00EC58CA /* UserTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextFieldStyle.swift; sourceTree = "<group>"; };
+		C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,8 +187,6 @@
 				C60513032E86FF9A005D1A27 /* TitleView.swift */,
 				C60513052E8700FC005D1A27 /* EventView.swift */,
 				C6B87A542E88326400106566 /* ActionButton.swift */,
-				C6183D202E8B0FB70087AEB6 /* RadioButton.swift */,
-				C6A99A582E8C593000042EDB /* UserTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -227,8 +229,12 @@
 		C69182BC2E89B6E500F49982 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C69182C02E89B75100F49982 /* SignUpView.swift */,
 				C69182C82E89C21400F49982 /* PositionsView.swift */,
+				C6183D202E8B0FB70087AEB6 /* RadioButton.swift */,
+				C69182C02E89B75100F49982 /* SignUpView.swift */,
+				C6A99A582E8C593000042EDB /* UserTextFieldView.swift */,
+				C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */,
+				C6CF69F12E8D7CA000EC58CA /* Styles */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +391,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		C6CF69F12E8D7CA000EC58CA /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				C6CF69F22E8D7CBB00EC58CA /* UserTextFieldStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,11 +534,12 @@
 				C605130A2E870182005D1A27 /* UsersListView.swift in Sources */,
 				C69182C72E89BDEF00F49982 /* UserPosition.swift in Sources */,
 				C69182C92E89C21400F49982 /* PositionsView.swift in Sources */,
-				C6A99A592E8C593000042EDB /* UserTextField.swift in Sources */,
+				C6A99A592E8C593000042EDB /* UserTextFieldView.swift in Sources */,
 				C60513062E8700FC005D1A27 /* EventView.swift in Sources */,
 				C6C78C812E866EE80009544D /* Item.swift in Sources */,
 				C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */,
 				C6A99A512E8C48B800042EDB /* UserRegisterDTO.swift in Sources */,
+				C6CF69F32E8D7CBB00EC58CA /* UserTextFieldStyle.swift in Sources */,
 				C60513182E87115B005D1A27 /* AppDependency.swift in Sources */,
 				C60512F42E86F4CF005D1A27 /* User.swift in Sources */,
 				C6183D212E8B0FB70087AEB6 /* RadioButton.swift in Sources */,
@@ -543,6 +558,7 @@
 				C69182C12E89B75100F49982 /* SignUpView.swift in Sources */,
 				C605130C2E870845005D1A27 /* NetworkService.swift in Sources */,
 				C60512F92E86F971005D1A27 /* UserListRowView.swift in Sources */,
+				C6CF69F52E8D7FB800EC58CA /* UploadPhotoView.swift in Sources */,
 				C6A99A532E8C4BDF00042EDB /* Data + Ext.swift in Sources */,
 				C60512F22E86F4B3005D1A27 /* UsersViewModel.swift in Sources */,
 				C60513042E86FF9A005D1A27 /* TitleView.swift in Sources */,

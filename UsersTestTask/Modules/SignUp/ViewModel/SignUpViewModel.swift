@@ -85,11 +85,11 @@ private extension SignUpViewModel {
             nameError = error.description
         }
         
-        if case .failure(let error as ValidationError) = nameResult {
+        if case .failure(let error as ValidationError) = emailResult {
             emailError = error.description
         }
         
-        if case .failure(let error as ValidationError) = nameResult {
+        if case .failure(let error as ValidationError) = phoneResult {
             phoneError = error.description
         }
         

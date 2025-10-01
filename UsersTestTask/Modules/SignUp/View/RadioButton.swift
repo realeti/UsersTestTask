@@ -21,6 +21,7 @@ struct RadioButton: View {
                     .resizable()
                     .foregroundColor(.blueSky)
                     .frame(width: 14, height: 14)
+                    .animation(.snappy(duration: 0.1), value: isSelected)
             }
             //.symbolEffect(.bounce, options: .speed(3), value: isSelected)
             
