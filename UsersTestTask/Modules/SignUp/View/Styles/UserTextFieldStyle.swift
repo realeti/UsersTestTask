@@ -25,7 +25,7 @@ struct UserTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .font(CustomFont.nunitoSansRegular.set(size: 16))
-            .foregroundStyle(isError ? .primaryRed : .black.opacity(0.87))
+            .foregroundStyle(.black.opacity(0.87))
             .focused($isFocused)
             .padding(.vertical, 12)
             .padding(.horizontal, 16)

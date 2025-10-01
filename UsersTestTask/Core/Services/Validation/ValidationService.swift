@@ -16,6 +16,10 @@ protocol ValidationServiceProtocol {
 
 final class ValidationService: ValidationServiceProtocol {
     func validate(name: String) throws {
+        if name.isEmpty {
+            throw ValidationError.empty
+        }
+        
         let name = name.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if name.count < 2 || name.count > 60 {
@@ -24,6 +28,10 @@ final class ValidationService: ValidationServiceProtocol {
     }
     
     func validate(email: String) throws {
+        if email.isEmpty {
+            throw ValidationError.empty
+        }
+        
         let email = email.trimmingCharacters(in: .whitespacesAndNewlines)
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
@@ -34,6 +42,10 @@ final class ValidationService: ValidationServiceProtocol {
     }
     
     func validate(phone: String) throws {
+        if phone.isEmpty {
+            throw ValidationError.empty
+        }
+        
         let phone = phone.trimmingCharacters(in: .whitespacesAndNewlines)
         let phoneRegex = #"^\+380\d{9}$"#
         let predicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)

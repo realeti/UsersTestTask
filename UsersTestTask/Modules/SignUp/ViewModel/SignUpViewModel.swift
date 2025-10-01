@@ -24,6 +24,7 @@ final class SignUpViewModel {
     var nameError: String?
     var emailError: String?
     var phoneError: String?
+    var photoError: String?
     
     // MARK: - Init
     init(network: NetworkServiceProtocol, validation: ValidationServiceProtocol) {

@@ -18,27 +18,29 @@ struct SignUpView: View {
             
             ScrollView {
                 VStack(spacing: 24) {
-                    VStack(spacing: 16) {
+                    VStack(spacing: 12) {
                         UserTextFieldView(
                             title: "Your name",
                             text: $viewModel.name,
-                            isError: false,
-                            supportText: ""
+                            isError: viewModel.nameError != nil,
+                            supportText: viewModel.nameError ?? ""
                         )
                         
                         UserTextFieldView(
                             title: "Email",
                             text: $viewModel.email,
-                            isError: false,
-                            supportText: ""
+                            isError: viewModel.emailError != nil,
+                            supportText: viewModel.emailError ?? ""
                         )
+                        .keyboardType(.emailAddress)
                         
                         UserTextFieldView(
                             title: "Phone",
-                            text: $viewModel.name,
-                            isError: false,
-                            supportText: "+38 (XXX) XXX - XX - XX"
+                            text: $viewModel.phone,
+                            isError: viewModel.phoneError != nil,
+                            supportText: viewModel.phoneError ?? "+38 (XXX) XXX - XX - XX"
                         )
+                        .keyboardType(.phonePad)
                     }
                     
                     PositionsView(
@@ -46,10 +48,11 @@ struct SignUpView: View {
                         positions: viewModel.positions
                     )
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 4)
                     
                     UploadPhotoView(
-                        isError: false,
-                        supportText: "Photo is required",
+                        isError: viewModel.photoError != nil,
+                        supportText: viewModel.photoError ?? "",
                         action: {}
                     )
                     

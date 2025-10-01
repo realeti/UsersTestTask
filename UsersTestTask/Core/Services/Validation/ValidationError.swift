@@ -12,6 +12,7 @@ enum ValidationError: Error {
     case invalidEmail
     case invalidPhoneNumber
     case invalidPhoto
+    case empty
     
     var description: String {
         switch self {
@@ -23,6 +24,8 @@ enum ValidationError: Error {
             "Invalid phone format"
         case .invalidPhoto:
             "Invalid photo format"
+        case .empty:
+            "Required field"
         }
     }
 }
