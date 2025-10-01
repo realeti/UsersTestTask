@@ -23,7 +23,11 @@ struct UploadPhotoView: View {
                         .padding(.horizontal, 16)
                     
                     TextField("", text: .constant(""))
-                        .textFieldStyle(UserTextFieldStyle(isError: isError))
+                        .textFieldStyle(
+                            UserTextFieldStyle(
+                                isError: isError,
+                                isFocused: false)
+                        )
                         .disabled(true)
                 }
                 

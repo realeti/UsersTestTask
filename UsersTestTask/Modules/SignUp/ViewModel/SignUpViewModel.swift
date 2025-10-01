@@ -69,6 +69,8 @@ extension SignUpViewModel {
             )
             let result = try await networkService.register(user: user)
             print(result)
+        } catch let error as NetError {
+            print(error.localizedDescription)
         } catch {
             print(error.localizedDescription)
         }
@@ -78,6 +80,8 @@ extension SignUpViewModel {
 // MARK: - Validation
 private extension SignUpViewModel {
     func validate() -> Bool {
+        clearErrorMessages()
+        
         let nameResult = Result { try validationService.validate(name: name) }
         let emailResult = Result { try validationService.validate(email: email) }
         let phoneResult = Result { try validationService.validate(phone: phone) }
@@ -95,5 +99,11 @@ private extension SignUpViewModel {
         }
         
         return nameResult.isSucess && emailResult.isSucess && phoneResult.isSucess
+    }
+    
+    func clearErrorMessages() {
+        nameError = nil
+        emailError = nil
+        phoneError = nil
     }
 }

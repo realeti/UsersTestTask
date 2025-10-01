@@ -7,8 +7,13 @@
 
 import SwiftUI
 
+enum FocusField {
+    case name, email, phone
+}
+
 struct SignUpView: View {
     @Environment(SignUpViewModel.self) private var viewModel
+    @FocusState private var focusField: FocusField?
     
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -22,6 +27,8 @@ struct SignUpView: View {
                         UserTextFieldView(
                             title: "Your name",
                             text: $viewModel.name,
+                            focusField: $focusField,
+                            focusFieldType: .name,
                             isError: viewModel.nameError != nil,
                             supportText: viewModel.nameError ?? ""
                         )
@@ -29,14 +36,19 @@ struct SignUpView: View {
                         UserTextFieldView(
                             title: "Email",
                             text: $viewModel.email,
+                            focusField: $focusField,
+                            focusFieldType: .email,
                             isError: viewModel.emailError != nil,
                             supportText: viewModel.emailError ?? ""
                         )
                         .keyboardType(.emailAddress)
+                        .textInputAutocapitalization(.never)
                         
                         UserTextFieldView(
                             title: "Phone",
                             text: $viewModel.phone,
+                            focusField: $focusField,
+                            focusFieldType: .phone,
                             isError: viewModel.phoneError != nil,
                             supportText: viewModel.phoneError ?? "+38 (XXX) XXX - XX - XX"
                         )
@@ -69,10 +81,13 @@ struct SignUpView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 32)
             }
+            .scrollDismissesKeyboard(.interactively)
         }
         .task {
             await viewModel.getUserPositions()
         }
+        .contentShape(Rectangle())
+        .onTapGesture { focusField = nil }
     }
 }
 

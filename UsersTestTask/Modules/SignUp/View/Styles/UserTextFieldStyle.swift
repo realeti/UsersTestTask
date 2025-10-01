@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct UserTextFieldStyle: TextFieldStyle {
-    @FocusState private var isFocused: Bool
     let isError: Bool
+    let isFocused: Bool
     
     private var borderColor: Color {
         if isError {
@@ -26,7 +26,7 @@ struct UserTextFieldStyle: TextFieldStyle {
         configuration
             .font(CustomFont.nunitoSansRegular.set(size: 16))
             .foregroundStyle(.black.opacity(0.87))
-            .focused($isFocused)
+            //.focused($isFocused)
             .padding(.vertical, 12)
             .padding(.horizontal, 16)
             .frame(height: 56)

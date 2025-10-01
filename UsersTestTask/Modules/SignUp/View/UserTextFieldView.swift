@@ -10,8 +10,12 @@ import SwiftUI
 struct UserTextFieldView: View {
     let title: String
     @Binding var text: String
+    var focusField: FocusState<FocusField?>.Binding
+    let focusFieldType: FocusField
     let isError: Bool
     let supportText: String
+    
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -25,7 +29,11 @@ struct UserTextFieldView: View {
                 }
                 
                 TextField("", text: $text)
-                    .textFieldStyle(UserTextFieldStyle(isError: isError))
+                    .textFieldStyle(UserTextFieldStyle(
+                        isError: isError,
+                        isFocused: focusField.wrappedValue == focusFieldType)
+                    )
+                    .focused(focusField, equals: focusFieldType)
             }
             
             Text(supportText)
@@ -36,13 +44,17 @@ struct UserTextFieldView: View {
     }
 }
 
-#Preview {
+/*#Preview {
     @Previewable @State var text = ""
+    @Previewable @FocusState var focusField: FocusField?
+    
     UserTextFieldView(
         title: "Phone",
         text: $text,
+        focusField: $focusField,
+        focusFieldType: .phone,
         isError: false,
         supportText: "+38 (XXX) XXX - XX - XX"
     )
     .padding()
-}
+}*/
