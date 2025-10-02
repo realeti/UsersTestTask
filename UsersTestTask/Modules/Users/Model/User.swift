@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Comparable {
     let id: Int
     let name: String
     let email: String
@@ -16,6 +16,29 @@ struct User: Identifiable {
     let positionId: Int
     let registrationTimestamp: Double
     let photo: String
+    
+    static func < (lhs: User, rhs: User) -> Bool {
+        lhs.registrationTimestamp < rhs.registrationTimestamp
+    }
+    
+    private let phoneMask = "+XXX (XX) XXX XX XX"
+    
+    var formattedPhone: String {
+        let cleanNumber = phone.filter(\.isWholeNumber)
+        var result = ""
+        var index = cleanNumber.startIndex
+        
+        for ch in phoneMask where index < cleanNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanNumber[index])
+                index = cleanNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        
+        return result
+    }
 }
 
 extension User {

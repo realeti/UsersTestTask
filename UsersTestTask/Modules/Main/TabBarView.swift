@@ -11,17 +11,24 @@ struct TabBarView: View {
     enum TabItem: String {
         case users
         case signUp
-        case search
+        //case search
     }
     
     @State private var usersViewModel: UsersViewModel
+    @State private var signUpViewModel: SignUpViewModel
     @State private var selection: TabItem = .users
-    @State private var search = ""
+    //@State private var search = ""
     
     // MARK: - Init
     init(dependency: AppDependency) {
-        let vm = UsersViewModel(network: dependency.network)
-        _usersViewModel = State(initialValue: vm)
+        let usersVM = UsersViewModel(network: dependency.network)
+        let signUpVM = SignUpViewModel(
+            network: dependency.network,
+            validation: dependency.validation
+        )
+        
+        _usersViewModel = State(initialValue: usersVM)
+        _signUpViewModel = State(initialValue: signUpVM)
     }
 
     var body: some View {
@@ -36,13 +43,11 @@ struct TabBarView: View {
                     Image(.usersIcon)
                         .foregroundStyle(selection == .users ? .blueSky : .black.opacity(0.6))
                 }
-                // .environment(\.symbolVariants, .none)
             }
 
             Tab(value: .signUp) {
-                Text("Sign up view")
-                    .toolbarBackgroundVisibility(.visible, for: .tabBar)
-                    .toolbarBackground(.red, for: .tabBar)
+                SignUpView()
+                    .environment(signUpViewModel)
             } label: {
                 Label {
                     Text("Sign up")
@@ -50,7 +55,6 @@ struct TabBarView: View {
                     Image(.signUpIcon)
                         .foregroundStyle(selection == .signUp ? .blueSky : .black.opacity(0.6))
                 }
-                // .environment(\.symbolVariants, .none)
             }
 
             /*Tab(value: .search, role: .search) {

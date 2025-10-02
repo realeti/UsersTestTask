@@ -17,7 +17,10 @@ struct UserListRowView: View {
                     .resizable()
                     .scaledToFit()
             } placeholder: {
-                Color.gray
+                ProgressView()
+                    .tint(.black)
+                    .padding()
+                    .background(Color.gray.opacity(0.7))
             }
             .frame(width: 50, height: 50)
             .clipShape(.circle)
@@ -37,7 +40,7 @@ struct UserListRowView: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(user.email)
-                    Text(user.phone)
+                    Text(user.formattedPhone)
                 }
                 .font(CustomFont.nunitoSansRegular.set(size: 14))
                 .foregroundStyle(.black.opacity(0.87))
