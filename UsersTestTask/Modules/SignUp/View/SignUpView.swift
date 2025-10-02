@@ -83,6 +83,17 @@ struct SignUpView: View {
             }
             .scrollDismissesKeyboard(.interactively)
         }
+        .fullScreenCover(isPresented: $viewModel.isRegisterSuccess, onDismiss: {
+            viewModel.isRegisterSuccess = false
+        }, content: {
+            EventView(
+                title: viewModel.registerMessage,
+                image: viewModel.isRegisterSuccess ? "RegisterSuccess" : "RegisterFailed",
+                buttonTitle: viewModel.isRegisterSuccess ? "Got it" : "Try again",
+                isLoading: false,
+                isCanDismiss: true
+            ) { viewModel.isRegisterSuccess = false }
+        })
         .task {
             await viewModel.getUserPositions()
         }

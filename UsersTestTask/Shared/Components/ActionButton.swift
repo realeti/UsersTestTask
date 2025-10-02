@@ -44,6 +44,7 @@ struct ActionButtonStyle: ButtonStyle {
         configuration.label
             .font(CustomFont.nunitoSansSemiBold.set(size: 18))
             .foregroundStyle(.black.opacity(0.87))
+            .frame(minWidth: 70)
             .padding(EdgeInsets(top: 12, leading: 31.5, bottom: 12, trailing: 31.5))
             .background(buttonColor)
             .clipShape(RoundedRectangle(cornerRadius: 24))

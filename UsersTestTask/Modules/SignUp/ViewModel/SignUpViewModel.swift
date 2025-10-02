@@ -22,6 +22,9 @@ final class SignUpViewModel {
     var position = 0
     var selectedImageData: Data?
     
+    var isRegisterSuccess = true
+    var registerMessage = ""
+    
     var nameError: String?
     var emailError: String?
     var phoneError: String?
@@ -70,6 +73,8 @@ extension SignUpViewModel {
             )
             
             let result = try await networkService.register(user: user)
+            isRegisterSuccess = result.success
+            registerMessage = result.message
             print(result)
         } catch let error as NetError {
             print(error.localizedDescription)

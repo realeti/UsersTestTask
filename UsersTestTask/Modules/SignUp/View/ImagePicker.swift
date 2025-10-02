@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 struct ImagePicker: UIViewControllerRepresentable {
-    @Environment(\.isPresented) var isPresented
+    //@Environment(\.dismiss) var dismiss
     @Binding var selectedImage: UIImage?
     var sourceType: UIImagePickerController.SourceType
     
@@ -24,9 +24,14 @@ struct ImagePicker: UIViewControllerRepresentable {
             if let image = info[.originalImage] as? UIImage {
                 parent.selectedImage = image
             }
+            //parent.dismiss()
+            picker.dismiss(animated: true)
         }
         
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {}
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            //parent.dismiss()
+            picker.dismiss(animated: true)
+        }
     }
     
     func makeCoordinator() -> Coordinator {

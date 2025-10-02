@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func getUsers(page: Int) async throws -> UsersResponseDTO
-    func register(user: UserRegisterRequest) async throws -> Bool
+    func register(user: UserRegisterRequest) async throws -> UserRegisterResponse
     func getUserPositions() async throws -> [UserPosition]
 }
 
@@ -89,7 +89,7 @@ extension NetworkService {
 
 // MARK: - Register User
 extension NetworkService {
-    func register(user: UserRegisterRequest) async throws -> Bool {
+    func register(user: UserRegisterRequest) async throws -> UserRegisterResponse {
         var components = baseUrlComponents
         components.path = APIEndpoint.users
         
@@ -118,9 +118,8 @@ extension NetworkService {
             print(decodedData.fails.phone ?? "No phone error")
             print(decodedData.fails.positionId ?? "No position_id error")
             print(decodedData.fails.photo ?? "No photo error")
-            return decodedData.success
+            return UserRegisterResponse(dto: decodedData)
         } catch {
-            print("WRONG DECODE")
             throw NetError.wrongDecode
         }
     }
