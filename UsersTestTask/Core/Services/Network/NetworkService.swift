@@ -113,13 +113,9 @@ extension NetworkService {
             let decodedData = try decoder.decode(UserRegisterDTO.self, from: data)
             print("USER REGISTATION RESULT:")
             print(decodedData.message)
-            print(decodedData.fails.name ?? "No name error")
-            print(decodedData.fails.email ?? "No email error")
-            print(decodedData.fails.phone ?? "No phone error")
-            print(decodedData.fails.positionId ?? "No position_id error")
-            print(decodedData.fails.photo ?? "No photo error")
             return UserRegisterResponse(dto: decodedData)
         } catch {
+            print("Wrong decode")
             throw NetError.wrongDecode
         }
     }
@@ -163,9 +159,9 @@ private extension NetworkService {
             body.append("Content-Type: \(mimeType)\r\n\r\n")
             body.append(photoData)
             body.append("\r\n")
-            
-            body.append("--\(boundary)--\r\n")
         }
+        
+        body.append("--\(boundary)--\r\n")
         
         return body
     }

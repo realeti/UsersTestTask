@@ -96,7 +96,7 @@ struct UploadPhotoView: View {
         }
         .onChange(of: selectedImage) { _, newImage in
             if let newImage {
-                selectedImageData = newImage.jpegData(compressionQuality: 1.0)
+                selectedImageData = newImage.jpegData(compressionQuality: 0.7)
             }
         }
     }

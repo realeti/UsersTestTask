@@ -9,9 +9,9 @@ import Foundation
 
 struct UserRegisterDTO: Decodable {
     let success: Bool
-    let userId: Int
+    let userId: Int?
     let message: String
-    let fails: UserRegisterFailureDTO
+    let fails: UserRegisterFailureDTO?
     
     private enum CodingKeys: String, CodingKey {
         case success

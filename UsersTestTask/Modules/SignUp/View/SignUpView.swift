@@ -83,8 +83,8 @@ struct SignUpView: View {
             }
             .scrollDismissesKeyboard(.interactively)
         }
-        .fullScreenCover(isPresented: $viewModel.isRegisterSuccess, onDismiss: {
-            viewModel.isRegisterSuccess = false
+        .fullScreenCover(isPresented: $viewModel.isRegisterProccessed, onDismiss: {
+            viewModel.isRegisterProccessed = false
         }, content: {
             EventView(
                 title: viewModel.registerMessage,
