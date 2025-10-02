@@ -19,4 +19,21 @@ enum NetError: Error {
     case reconnectLimitExceeded
     case retryFailed
     case noInternet
+    
+    var description: String {
+        if case .statusCode(let code) = self {
+            switch code {
+            case 409:
+                return "User with this phone or email already exist"
+            case 401:
+                return "The token expired."
+            case 422:
+                return "Validation failed"
+            default:
+                return "Unknown status code: \(code)"
+            }
+        }
+        
+        return "Unknown error"
+    }
 }

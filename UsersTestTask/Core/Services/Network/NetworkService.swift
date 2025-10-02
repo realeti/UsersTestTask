@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func getUsers(page: Int) async throws -> UsersResponseDTO
-    func register(user: UserRegisterRequest) async throws -> Bool
+    func register(user: UserRegisterRequest) async throws -> UserRegisterResponse
     func getUserPositions() async throws -> [UserPosition]
 }
 
@@ -89,7 +89,7 @@ extension NetworkService {
 
 // MARK: - Register User
 extension NetworkService {
-    func register(user: UserRegisterRequest) async throws -> Bool {
+    func register(user: UserRegisterRequest) async throws -> UserRegisterResponse {
         var components = baseUrlComponents
         components.path = APIEndpoint.users
         
@@ -113,14 +113,9 @@ extension NetworkService {
             let decodedData = try decoder.decode(UserRegisterDTO.self, from: data)
             print("USER REGISTATION RESULT:")
             print(decodedData.message)
-            print(decodedData.fails.name ?? "No name error")
-            print(decodedData.fails.email ?? "No email error")
-            print(decodedData.fails.phone ?? "No phone error")
-            print(decodedData.fails.positionId ?? "No position_id error")
-            print(decodedData.fails.photo ?? "No photo error")
-            return decodedData.success
+            return UserRegisterResponse(dto: decodedData)
         } catch {
-            print("WRONG DECODE")
+            print("Wrong decode")
             throw NetError.wrongDecode
         }
     }
@@ -164,9 +159,9 @@ private extension NetworkService {
             body.append("Content-Type: \(mimeType)\r\n\r\n")
             body.append(photoData)
             body.append("\r\n")
-            
-            body.append("--\(boundary)--\r\n")
         }
+        
+        body.append("--\(boundary)--\r\n")
         
         return body
     }

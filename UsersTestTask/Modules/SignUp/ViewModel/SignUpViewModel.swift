@@ -22,6 +22,10 @@ final class SignUpViewModel {
     var position = 0
     var selectedImageData: Data?
     
+    var isRegisterSuccess = false
+    var registerMessage = ""
+    var isRegisterProccessed = false
+    
     var nameError: String?
     var emailError: String?
     var phoneError: String?
@@ -51,7 +55,10 @@ extension SignUpViewModel {
 // MARK: - Register User
 extension SignUpViewModel {
     func register() async {
-        defer { isLoading = false }
+        defer {
+            isLoading = false
+            isRegisterProccessed = true
+        }
         
         guard validate() else {
             print("Not validate")
@@ -70,9 +77,17 @@ extension SignUpViewModel {
             )
             
             let result = try await networkService.register(user: user)
+            isRegisterSuccess = result.success
+            registerMessage = result.message
             print(result)
         } catch let error as NetError {
-            print(error.localizedDescription)
+            if case .statusCode(let code) = error {
+                if code == 409 {
+                    registerMessage = error.description
+                }
+            } else {
+                registerMessage = error.localizedDescription
+            }
         } catch {
             print(error.localizedDescription)
         }

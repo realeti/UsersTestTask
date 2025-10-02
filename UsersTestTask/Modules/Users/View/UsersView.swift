@@ -19,6 +19,7 @@ struct UsersView: View {
                         image: "NoConnection",
                         buttonTitle: "Try again",
                         isLoading: viewModel.isLoading,
+                        isCanDismiss: false,
                         action: {
                             Task {
                                 await viewModel.getUsers()

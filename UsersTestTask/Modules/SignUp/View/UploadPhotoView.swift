@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-import PhotosUI
 
 struct UploadPhotoView: View {
-    @State private var selectedItem: PhotosPickerItem?
+    @State private var selectedImage: UIImage?
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var showActionSheet = false
+    @State private var showImagePicker = false
     @Binding var selectedImageData: Data?
     
     let isError: Bool
@@ -19,11 +21,21 @@ struct UploadPhotoView: View {
         VStack(alignment: .leading, spacing: 4) {
             ZStack(alignment: .trailing) {
                 ZStack(alignment: .leading) {
-                    Text("Upload your photo")
-                        .font(CustomFont.nunitoSansRegular.set(size: 16))
-                        .foregroundStyle(isError ? .primaryRed : .black.opacity(0.6))
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 16)
+                    HStack(spacing: 0) {
+                        Text("Upload your photo")
+                            .font(CustomFont.nunitoSansRegular.set(size: 16))
+                            .foregroundStyle(isError ? .primaryRed : .black.opacity(0.6))
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 16)
+                        
+                        Image(systemName: "checkmark.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 20)
+                            .foregroundStyle(.green)
+                            .padding(.leading, -8)
+                            .opacity(selectedImage == nil ? 0 : 1)
+                    }
                     
                     TextField("", text: .constant(""))
                         .textFieldStyle(
@@ -34,35 +46,58 @@ struct UploadPhotoView: View {
                         .disabled(true)
                 }
                 
-                PhotosPicker("Upload", selection: $selectedItem, matching: .images)
-                    .onChange(of: selectedItem) { _, newItem in
-                        Task {
-                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                selectedImageData = data
-                            }
-                        }
-                    }
-                
-                /*Button {
-                    action()
+                Button {
+                    showActionSheet = true
                 } label: {
-                    /*Text("Upload")
+                    Text("Upload")
                         .font(CustomFont.nunitoSansSemiBold.set(size: 16))
-                        .foregroundStyle(.secondaryBlue)*/
-                    /*PhotosPicker(selection: $selectedItem, matching: .images) {
-                        Text("Upload")
-                            .font(CustomFont.nunitoSansSemiBold.set(size: 16))
-                            .foregroundStyle(.secondaryBlue)
-                    }*/
-                }*/
+                        .foregroundStyle(.secondaryBlue)
+                }
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
+                .confirmationDialog(
+                    "Choose how you want to add a photo",
+                    isPresented: $showActionSheet,
+                    titleVisibility: .visible
+                ) {
+                    Button("Camera") {
+                        sourceType = .camera
+                        showImagePicker = true
+                    }
+                    
+                    Button("Gallery") {
+                        sourceType = .photoLibrary
+                        showImagePicker = true
+                    }
+                    
+                    Button("Cancel", role: .cancel) { }
+                }
+                .fullScreenCover(isPresented: $showImagePicker) {
+                    ImagePicker(selectedImage: $selectedImage, sourceType: sourceType)
+                        .ignoresSafeArea()
+                }
             }
             
             Text(supportText)
                 .font(CustomFont.nunitoSansRegular.set(size: 12))
                 .foregroundStyle(isError ? .primaryRed : .black.opacity(0.6))
                 .padding(.horizontal, 16)
+                .padding(.bottom, 6)
+            
+            if let image = selectedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(.circle)
+                    .shadow(color: .black.opacity(0.15), radius: 4)
+                    .frame(height: 250)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+        }
+        .onChange(of: selectedImage) { _, newImage in
+            if let newImage {
+                selectedImageData = newImage.jpegData(compressionQuality: 0.7)
+            }
         }
     }
 }
