@@ -9,8 +9,10 @@ import SwiftUI
 
 class AppDependency {
     let network: NetworkServiceProtocol
+    let validation: ValidationServiceProtocol
     
     init() {
         self.network = NetworkService()
+        self.validation = ValidationService()
     }
 }

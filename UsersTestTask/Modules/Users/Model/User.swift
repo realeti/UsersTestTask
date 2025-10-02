@@ -20,6 +20,25 @@ struct User: Identifiable, Comparable {
     static func < (lhs: User, rhs: User) -> Bool {
         lhs.registrationTimestamp < rhs.registrationTimestamp
     }
+    
+    private let phoneMask = "+XXX (XX) XXX XX XX"
+    
+    var formattedPhone: String {
+        let cleanNumber = phone.filter(\.isWholeNumber)
+        var result = ""
+        var index = cleanNumber.startIndex
+        
+        for ch in phoneMask where index < cleanNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanNumber[index])
+                index = cleanNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        
+        return result
+    }
 }
 
 extension User {
