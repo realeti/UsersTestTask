@@ -12,5 +12,5 @@ struct UserRegisterRequest {
     let email: String
     let phone: String
     let positionId: Int
-    let photo: String
+    let photoData: Data?
 }

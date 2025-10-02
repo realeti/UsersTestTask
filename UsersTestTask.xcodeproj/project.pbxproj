@@ -25,6 +25,7 @@
 		C60513142E870BFF005D1A27 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513132E870BFF005D1A27 /* HTTPMethod.swift */; };
 		C60513162E870DA6005D1A27 /* NetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513152E870DA5005D1A27 /* NetError.swift */; };
 		C60513182E87115B005D1A27 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60513172E87115B005D1A27 /* AppDependency.swift */; };
+		C615AF3B2E8E7E550092CC4C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C615AF3A2E8E7E550092CC4C /* ImagePicker.swift */; };
 		C6183D212E8B0FB70087AEB6 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6183D202E8B0FB70087AEB6 /* RadioButton.swift */; };
 		C651593A2E8939430099A2F6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65159392E8939430099A2F6 /* ImageCache.swift */; };
 		C69182C12E89B75100F49982 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69182C02E89B75100F49982 /* SignUpView.swift */; };
@@ -48,6 +49,7 @@
 		C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C78C992E867C670009544D /* TabBarView.swift */; };
 		C6CF69F32E8D7CBB00EC58CA /* UserTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF69F22E8D7CBB00EC58CA /* UserTextFieldStyle.swift */; };
 		C6CF69F52E8D7FB800EC58CA /* UploadPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */; };
+		C6CF69FB2E8DB51A00EC58CA /* UserTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CF69FA2E8DB51A00EC58CA /* UserTokenDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,7 @@
 		C60513132E870BFF005D1A27 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C60513152E870DA5005D1A27 /* NetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetError.swift; sourceTree = "<group>"; };
 		C60513172E87115B005D1A27 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C615AF3A2E8E7E550092CC4C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C6183D202E8B0FB70087AEB6 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		C65159392E8939430099A2F6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C69182C02E89B75100F49982 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		C6C78C992E867C670009544D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C6CF69F22E8D7CBB00EC58CA /* UserTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTextFieldStyle.swift; sourceTree = "<group>"; };
 		C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoView.swift; sourceTree = "<group>"; };
+		C6CF69FA2E8DB51A00EC58CA /* UserTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				C60512F62E86F719005D1A27 /* UserDTO.swift */,
 				C69182C42E89BD8800F49982 /* UserPositionsDTO.swift */,
 				C6A99A502E8C48B800042EDB /* UserRegisterDTO.swift */,
+				C6CF69FA2E8DB51A00EC58CA /* UserTokenDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			children = (
 				C69182C82E89C21400F49982 /* PositionsView.swift */,
 				C6183D202E8B0FB70087AEB6 /* RadioButton.swift */,
+				C615AF3A2E8E7E550092CC4C /* ImagePicker.swift */,
 				C69182C02E89B75100F49982 /* SignUpView.swift */,
 				C6A99A582E8C593000042EDB /* UserTextFieldView.swift */,
 				C6CF69F42E8D7FB800EC58CA /* UploadPhotoView.swift */,
@@ -535,12 +541,14 @@
 				C69182C72E89BDEF00F49982 /* UserPosition.swift in Sources */,
 				C69182C92E89C21400F49982 /* PositionsView.swift in Sources */,
 				C6A99A592E8C593000042EDB /* UserTextFieldView.swift in Sources */,
+				C615AF3B2E8E7E550092CC4C /* ImagePicker.swift in Sources */,
 				C60513062E8700FC005D1A27 /* EventView.swift in Sources */,
 				C6C78C812E866EE80009544D /* Item.swift in Sources */,
 				C6C78C9A2E867C670009544D /* TabBarView.swift in Sources */,
 				C6A99A512E8C48B800042EDB /* UserRegisterDTO.swift in Sources */,
 				C6CF69F32E8D7CBB00EC58CA /* UserTextFieldStyle.swift in Sources */,
 				C60513182E87115B005D1A27 /* AppDependency.swift in Sources */,
+				C6CF69FB2E8DB51A00EC58CA /* UserTokenDTO.swift in Sources */,
 				C60512F42E86F4CF005D1A27 /* User.swift in Sources */,
 				C6183D212E8B0FB70087AEB6 /* RadioButton.swift in Sources */,
 				C6A99A4D2E8C437100042EDB /* ValidationService.swift in Sources */,

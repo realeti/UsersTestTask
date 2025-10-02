@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct UploadPhotoView: View {
+    @State private var selectedItem: PhotosPickerItem?
+    @Binding var selectedImageData: Data?
+    
     let isError: Bool
     let supportText: String
-    let action: () -> Void
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
@@ -31,13 +34,27 @@ struct UploadPhotoView: View {
                         .disabled(true)
                 }
                 
-                Button {
+                PhotosPicker("Upload", selection: $selectedItem, matching: .images)
+                    .onChange(of: selectedItem) { _, newItem in
+                        Task {
+                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                selectedImageData = data
+                            }
+                        }
+                    }
+                
+                /*Button {
                     action()
                 } label: {
-                    Text("Upload")
+                    /*Text("Upload")
                         .font(CustomFont.nunitoSansSemiBold.set(size: 16))
-                        .foregroundStyle(.secondaryBlue)
-                }
+                        .foregroundStyle(.secondaryBlue)*/
+                    /*PhotosPicker(selection: $selectedItem, matching: .images) {
+                        Text("Upload")
+                            .font(CustomFont.nunitoSansSemiBold.set(size: 16))
+                            .foregroundStyle(.secondaryBlue)
+                    }*/
+                }*/
                 .padding(.vertical, 12)
                 .padding(.horizontal, 16)
             }
@@ -52,8 +69,9 @@ struct UploadPhotoView: View {
 
 #Preview {
     UploadPhotoView(
+        selectedImageData: .constant(Data()),
         isError: false,
         supportText: "test"
-    ) {}
-        .padding()
+    )
+    .padding()
 }

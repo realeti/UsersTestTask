@@ -20,6 +20,7 @@ final class SignUpViewModel {
     var email = ""
     var phone = ""
     var position = 0
+    var selectedImageData: Data?
     
     var nameError: String?
     var emailError: String?
@@ -65,8 +66,9 @@ extension SignUpViewModel {
                 email: email,
                 phone: phone,
                 positionId: position,
-                photo: ""
+                photoData: selectedImageData
             )
+            
             let result = try await networkService.register(user: user)
             print(result)
         } catch let error as NetError {

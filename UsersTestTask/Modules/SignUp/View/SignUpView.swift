@@ -63,9 +63,9 @@ struct SignUpView: View {
                     .padding(.top, 4)
                     
                     UploadPhotoView(
+                        selectedImageData: $viewModel.selectedImageData,
                         isError: viewModel.photoError != nil,
-                        supportText: viewModel.photoError ?? "",
-                        action: {}
+                        supportText: viewModel.photoError ?? ""
                     )
                     
                     ActionButton(

@@ -10,4 +10,5 @@ import Foundation
 enum APIEndpoint {
     static let users = "/api/v1/users"
     static let positions = "/api/v1/positions"
+    static let token = "/api/v1/token"
 }

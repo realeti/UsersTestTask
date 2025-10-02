@@ -26,7 +26,6 @@ struct UserTextFieldStyle: TextFieldStyle {
         configuration
             .font(CustomFont.nunitoSansRegular.set(size: 16))
             .foregroundStyle(.black.opacity(0.87))
-            //.focused($isFocused)
             .padding(.vertical, 12)
             .padding(.horizontal, 16)
             .frame(height: 56)
