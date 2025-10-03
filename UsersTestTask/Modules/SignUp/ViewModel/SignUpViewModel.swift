@@ -55,13 +55,9 @@ extension SignUpViewModel {
 // MARK: - Register User
 extension SignUpViewModel {
     func register() async {
-        defer {
-            isLoading = false
-            isRegisterProccessed = true
-        }
+        defer { isLoading = false }
         
         guard validate() else {
-            print("Not validate")
             return
         }
         
@@ -81,14 +77,10 @@ extension SignUpViewModel {
             registerMessage = result.message
             print(result)
         } catch let error as NetError {
-            if case .statusCode(let code) = error {
-                if code == 409 {
-                    registerMessage = error.description
-                }
-            } else {
-                registerMessage = error.localizedDescription
-            }
+            isRegisterProccessed = true
+            handleNetworkError(error: error)
         } catch {
+            isRegisterProccessed = true
             print(error.localizedDescription)
         }
     }
@@ -102,6 +94,7 @@ private extension SignUpViewModel {
         let nameResult = Result { try validationService.validate(name: name) }
         let emailResult = Result { try validationService.validate(email: email) }
         let phoneResult = Result { try validationService.validate(phone: phone) }
+        let photoResult = Result { try validationService.validate(photo: selectedImageData) }
         
         if case .failure(let error as ValidationError) = nameResult {
             nameError = error.description
@@ -115,12 +108,56 @@ private extension SignUpViewModel {
             phoneError = error.description
         }
         
-        return nameResult.isSucess && emailResult.isSucess && phoneResult.isSucess
+        if case .failure(let error as ValidationError) = photoResult {
+            photoError = error.description
+        }
+        
+        return nameResult.isSucess
+        && emailResult.isSucess
+        && phoneResult.isSucess
+        && photoResult.isSucess
     }
     
     func clearErrorMessages() {
         nameError = nil
         emailError = nil
         phoneError = nil
+        photoError = nil
+    }
+}
+
+// MARK: - Handle Network Error
+private extension SignUpViewModel {
+    func handleNetworkError(error: NetError) {
+        switch error {
+        case .statusCode(_, let data):
+            guard let dto = try? JSONDecoder().decode(UserRegisterDTO.self, from: data) else {
+                registerMessage = error.description
+                return
+            }
+            
+        registerMessage = getFailsErrorMessage(dto: dto)
+        default:
+            registerMessage = error.description
+        }
+    }
+    
+    func getFailsErrorMessage(dto: UserRegisterDTO) -> String {
+        if let fails = dto.fails {
+            let fieldError =
+                fails.name?.first ??
+                fails.email?.first ??
+                fails.phone?.first ??
+                fails.positionId?.first ??
+                fails.photo?.first
+            
+            if let fieldError {
+                return ("\(dto.message)\n\(fieldError)")
+            } else {
+                return dto.message
+            }
+        } else {
+            return dto.message
+        }
     }
 }

@@ -5,13 +5,13 @@
 //  Created by realeti on 30.09.2025.
 //
 
-import Foundation
+import UIKit
 
 protocol ValidationServiceProtocol {
     func validate(name: String) throws
     func validate(email: String) throws
     func validate(phone: String) throws
-    func validate(photo: Data) throws
+    func validate(photo: Data?) throws
 }
 
 final class ValidationService: ValidationServiceProtocol {
@@ -55,7 +55,41 @@ final class ValidationService: ValidationServiceProtocol {
         }
     }
     
-    func validate(photo: Data) throws {
+    func validate(photo: Data?) throws {
+        // Data is not empty
+        guard let photo, !photo.isEmpty else {
+            throw ValidationError.emptyPhoto
+        }
         
+        // Photo format
+        guard let mimeType = detectMimeType(photo),
+              ["image/jpeg", "image/png"].contains(mimeType) else {
+            throw ValidationError.unsupportedFormat
+        }
+        
+        // Photo size <= 5 MB
+        let maxSize = 5 * 1024 * 1024
+        
+        if photo.count > maxSize {
+            throw ValidationError.photoTooLarge
+        }
+        
+        // Photo size >= 70px
+        if let image = UIImage(data: photo) {
+            if image.size.width < 70 || image.size.height < 70 {
+                throw ValidationError.photoToSmall
+            }
+        } else {
+            throw ValidationError.invalidImage
+        }
+    }
+}
+
+private extension ValidationService {
+    func detectMimeType(_ data: Data) -> String? {
+        let bytes = [UInt8](data.prefix(8))
+        if bytes.starts(with: [0xFF, 0xD8, 0xFF]) { return "image/jpeg" }
+        if bytes.starts(with: [0x89, 0x50, 0x4E, 0x47]) { return "image/png" }
+        return nil
     }
 }
