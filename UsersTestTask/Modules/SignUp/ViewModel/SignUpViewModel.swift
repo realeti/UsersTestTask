@@ -102,6 +102,7 @@ private extension SignUpViewModel {
         let nameResult = Result { try validationService.validate(name: name) }
         let emailResult = Result { try validationService.validate(email: email) }
         let phoneResult = Result { try validationService.validate(phone: phone) }
+        let photoResult = Result { try validationService.validate(photo: selectedImageData) }
         
         if case .failure(let error as ValidationError) = nameResult {
             nameError = error.description
@@ -115,12 +116,20 @@ private extension SignUpViewModel {
             phoneError = error.description
         }
         
-        return nameResult.isSucess && emailResult.isSucess && phoneResult.isSucess
+        if case .failure(let error as ValidationError) = photoResult {
+            photoError = error.description
+        }
+        
+        return nameResult.isSucess
+        && emailResult.isSucess
+        && phoneResult.isSucess
+        && photoResult.isSucess
     }
     
     func clearErrorMessages() {
         nameError = nil
         emailError = nil
         phoneError = nil
+        photoError = nil
     }
 }
