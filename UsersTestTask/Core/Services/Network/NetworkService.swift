@@ -29,30 +29,32 @@ final class NetworkService: NetworkServiceProtocol {
 // MARK: - Perform Request
 private extension NetworkService {
     func performRequest(request: URLRequest) async throws -> Data {
+        let (data, response): (Data, URLResponse)
+        
         do {
-            let (data, response) = try await session.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                print("Bad Response")
-                throw NetError.badResponse
-            }
-            
-            guard (200..<300).contains(httpResponse.statusCode) else {
-                print("Status code \(httpResponse.statusCode)")
-                throw NetError.statusCode(httpResponse.statusCode)
-            }
-            
-            return data
+            (data, response) = try await session.data(for: request)
         } catch let error as URLError {
-            if error.code == .notConnectedToInternet || error.code == .networkConnectionLost || error.code == .timedOut {
+            if error.code == .notConnectedToInternet ||
+                error.code == .networkConnectionLost ||
+                error.code == .timedOut {
                 throw NetError.noInternet
             }
-            print("URLError:", error.localizedDescription)
-            throw NetError.reconnectLimitExceeded
+            throw NetError.connectionProblem
         } catch {
-            print("Connection problem")
             throw NetError.connectionProblem
         }
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("Bad Response")
+            throw NetError.badResponse
+        }
+        
+        guard (200..<300).contains(httpResponse.statusCode) else {
+            print("Status code \(httpResponse.statusCode)")
+            throw NetError.statusCode(httpResponse.statusCode, data)
+        }
+        
+        return data
     }
 }
 

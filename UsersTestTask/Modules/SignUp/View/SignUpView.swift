@@ -70,7 +70,7 @@ struct SignUpView: View {
                     
                     ActionButton(
                         title: "Sign up",
-                        isDisabled: false,
+                        isDisabled: viewModel.isLoading,
                         action: {
                             Task {
                                 await viewModel.register()
@@ -92,7 +92,10 @@ struct SignUpView: View {
                 buttonTitle: viewModel.isRegisterSuccess ? "Got it" : "Try again",
                 isLoading: false,
                 isCanDismiss: true
-            ) { viewModel.isRegisterSuccess = false }
+            ) {
+                viewModel.isRegisterSuccess = false
+                viewModel.isRegisterProccessed = false
+            }
         })
         .task {
             await viewModel.getUserPositions()

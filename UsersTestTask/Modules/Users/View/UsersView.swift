@@ -41,8 +41,8 @@ struct UsersView: View {
                 UsersListView()
             }
         }
-        .task {
-            await viewModel.getUsers()
+        .onAppear {
+            Task { await viewModel.getUsers() }
         }
     }
 }
