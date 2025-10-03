@@ -8,7 +8,7 @@
 import Foundation
 
 enum NetError: Error {
-    case statusCode(Int)
+    case statusCode(Int, Data)
     case invalidURL
     case invalidData
     case badResponse
@@ -19,21 +19,33 @@ enum NetError: Error {
     case reconnectLimitExceeded
     case retryFailed
     case noInternet
-    
+}
+
+extension NetError {
     var description: String {
-        if case .statusCode(let code) = self {
-            switch code {
-            case 409:
-                return "User with this phone or email already exist"
-            case 401:
-                return "The token expired."
-            case 422:
-                return "Validation failed"
-            default:
-                return "Unknown status code: \(code)"
-            }
+        switch self {
+        case .invalidURL:
+            "Invalid URL"
+        case .invalidData:
+            "Invalid Data"
+        case .badResponse:
+            "Bad response"
+        case .wrongDecode:
+            "Wrong Decode"
+        case .connectionProblem:
+            "Connection Problem"
+        case .unsupportedMessage:
+            "Unsupported message"
+        case .connectionNotOpen:
+            "Connection not open"
+        case .reconnectLimitExceeded:
+            "Reconnect limit exceeded"
+        case .retryFailed:
+            "Retry failed"
+        case .noInternet:
+            "No internet"
+        default:
+            "Something went wrong"
         }
-        
-        return "Unknown error"
     }
 }
