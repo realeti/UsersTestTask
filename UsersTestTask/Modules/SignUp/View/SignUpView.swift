@@ -50,7 +50,8 @@ struct SignUpView: View {
                             focusField: $focusField,
                             focusFieldType: .phone,
                             isError: viewModel.phoneError != nil,
-                            supportText: viewModel.phoneError ?? "+38 (XXX) XXX - XX - XX"
+                            supportText: viewModel.phoneError ?? "+38 (XXX) XXX - XX - XX",
+                            isPhoneField: true
                         )
                         .keyboardType(.phonePad)
                     }

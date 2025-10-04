@@ -13,12 +13,17 @@ final class SignUpViewModel {
     private let networkService: NetworkServiceProtocol
     private let validationService: ValidationServiceProtocol
     private(set) var positions: [UserPosition] = []
+    private var phoneDigits = ""
     
     // MARK: - Public Properties
     var isLoading = false
     var name = ""
     var email = ""
-    var phone = ""
+    var phone = "" {
+        didSet {
+            phoneDigits = "+\(phone.filter(\.isWholeNumber))"
+        }
+    }
     var position = 0
     var selectedImageData: Data?
     
@@ -67,7 +72,7 @@ extension SignUpViewModel {
             let user = UserRegisterRequest(
                 name: name,
                 email: email,
-                phone: phone,
+                phone: phoneDigits,
                 positionId: position,
                 photoData: selectedImageData
             )
@@ -93,7 +98,7 @@ private extension SignUpViewModel {
         
         let nameResult = Result { try validationService.validate(name: name) }
         let emailResult = Result { try validationService.validate(email: email) }
-        let phoneResult = Result { try validationService.validate(phone: phone) }
+        let phoneResult = Result { try validationService.validate(phone: phoneDigits) }
         let photoResult = Result { try validationService.validate(photo: selectedImageData) }
         
         if case .failure(let error as ValidationError) = nameResult {

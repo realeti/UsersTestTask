@@ -14,6 +14,7 @@ struct UserTextFieldView: View {
     let focusFieldType: FocusField
     let isError: Bool
     let supportText: String
+    var isPhoneField = false
     
     @FocusState private var isFocused: Bool
     
@@ -34,12 +35,42 @@ struct UserTextFieldView: View {
                         isFocused: focusField.wrappedValue == focusFieldType)
                     )
                     .focused(focusField, equals: focusFieldType)
+                    .onChange(of: text) { _, newValue in
+                        if isPhoneField {
+                            applyMask(for: newValue)
+                        }
+                    }
             }
             
             Text(supportText)
                 .font(CustomFont.nunitoSansRegular.set(size: 12))
                 .foregroundStyle(isError ? .primaryRed : .black.opacity(0.6))
                 .padding(.horizontal, 16)
+        }
+    }
+}
+
+private extension UserTextFieldView {
+    func applyMask(for newValue: String) {
+        let mask = "+XX (XXX) XXX - XX - XX"
+        let maxDigits = 12
+        let digits = newValue.filter(\.isWholeNumber)
+        var trimmedText = String(digits.prefix(maxDigits))
+        
+        var result = ""
+        
+        for char in mask {
+            guard !trimmedText.isEmpty else { break }
+            
+            if char == "X" {
+                result.append(trimmedText.removeFirst())
+            } else {
+                result.append(char)
+            }
+        }
+        
+        if result != newValue {
+            text = result
         }
     }
 }
